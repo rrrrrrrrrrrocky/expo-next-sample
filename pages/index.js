@@ -1,21 +1,29 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Dimensions, SafeAreaView, StyleSheet } from "react-native";
+import { WebView } from 'react-native-webview';
+
+const deviceHeight = (Dimensions.get('window').height);
+const deviceWidth = Dimensions.get('window').width;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Expo + Next.js 👋</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+    <WebView
+        style={styles.webview}
+        source={{ uri: 'https://market.tpirates.com' }} />
+  </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
-  text: {
-    fontSize: 16,
+  webview: {
+    flex: 1,
+    width: deviceWidth,
+    height: deviceHeight,
   },
 });
